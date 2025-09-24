@@ -50,6 +50,7 @@ namespace ImageProcessing
             openFileDialog2 = new OpenFileDialog();
             button7 = new Button();
             button8 = new Button();
+            button9 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -74,6 +75,7 @@ namespace ImageProcessing
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(376, 345);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
@@ -92,7 +94,7 @@ namespace ImageProcessing
             pictureBox2.Location = new Point(0, 0);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(399, 345);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
             // 
@@ -142,7 +144,7 @@ namespace ImageProcessing
             // 
             // button1
             // 
-            button1.Location = new Point(12, 462);
+            button1.Location = new Point(12, 509);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 3;
@@ -152,7 +154,7 @@ namespace ImageProcessing
             // 
             // button2
             // 
-            button2.Location = new Point(93, 462);
+            button2.Location = new Point(93, 509);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 5;
@@ -162,7 +164,7 @@ namespace ImageProcessing
             // 
             // button3
             // 
-            button3.Location = new Point(174, 462);
+            button3.Location = new Point(174, 509);
             button3.Name = "button3";
             button3.Size = new Size(115, 23);
             button3.TabIndex = 6;
@@ -172,7 +174,7 @@ namespace ImageProcessing
             // 
             // button4
             // 
-            button4.Location = new Point(295, 462);
+            button4.Location = new Point(295, 509);
             button4.Name = "button4";
             button4.Size = new Size(75, 23);
             button4.TabIndex = 7;
@@ -182,7 +184,7 @@ namespace ImageProcessing
             // 
             // button5
             // 
-            button5.Location = new Point(376, 462);
+            button5.Location = new Point(376, 509);
             button5.Name = "button5";
             button5.Size = new Size(75, 23);
             button5.TabIndex = 8;
@@ -204,7 +206,7 @@ namespace ImageProcessing
             pictureBox4.Location = new Point(0, 0);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(415, 345);
-            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.TabIndex = 0;
             pictureBox4.TabStop = false;
             pictureBox4.Click += pictureBox4_Click;
@@ -243,11 +245,22 @@ namespace ImageProcessing
             button8.UseVisualStyleBackColor = true;
             button8.Click += button8_Click;
             // 
+            // button9
+            // 
+            button9.Location = new Point(148, 416);
+            button9.Name = "button9";
+            button9.Size = new Size(75, 23);
+            button9.TabIndex = 13;
+            button9.Text = "WebCam";
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1225, 497);
+            ClientSize = new Size(1225, 554);
+            Controls.Add(button9);
             Controls.Add(button8);
             Controls.Add(button7);
             Controls.Add(button6);
@@ -261,7 +274,7 @@ namespace ImageProcessing
             Controls.Add(panel1);
             Controls.Add(menuStrip1);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Image Processing";
             Load += Form1_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -298,5 +311,6 @@ namespace ImageProcessing
         private OpenFileDialog openFileDialog2;
         private Button button7;
         private Button button8;
+        private Button button9;
     }
 }

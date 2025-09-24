@@ -49,44 +49,20 @@ namespace ImageProcessing
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (pictureBox1.Image == null) return;
-            Bitmap source = (Bitmap)pictureBox1.Image;
-            Bitmap grayScale = new Bitmap(source.Width, source.Height);
-
-            for (int x = 0; x < source.Width; x++)
+            if (isCameraRunning && webcamDevice != null)
             {
-                for (int y = 0; y < source.Height; y++)
-                {
-                    Color pixelColor = source.GetPixel(x, y);
-
-                    int grayValue = (int)(pixelColor.R + pixelColor.G + pixelColor.B) / 3;
-
-                    Color grayColor = Color.FromArgb(pixelColor.A, grayValue, grayValue, grayValue);
-
-                    grayScale.SetPixel(x, y, grayColor);
-                }
+                CaptureFromWebcamForProcessing();
             }
-            pictureBox2.Image = grayScale;
+            applyGrayScale();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (pictureBox1.Image == null) return;
-            Bitmap source = (Bitmap)pictureBox1.Image;
-            Bitmap inverse = new Bitmap(source.Width, source.Height);
-
-            for (int x = 0; x < source.Width; x++)
+            if (isCameraRunning && webcamDevice != null)
             {
-                for (int y = 0; y < source.Height; y++)
-                {
-                    Color pixelColor = source.GetPixel(x, y);
-
-                    Color newColor = Color.FromArgb(pixelColor.A, 255 - pixelColor.R, 255 - pixelColor.G, 255 - pixelColor.B);
-
-                    inverse.SetPixel(x, y, newColor);
-                }
+                CaptureFromWebcamForProcessing();
             }
-            pictureBox2.Image = inverse;
+            applyInversion();
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -112,29 +88,150 @@ namespace ImageProcessing
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (pictureBox1.Image == null) return;
-            Bitmap source = (Bitmap)pictureBox1.Image;
-            Bitmap sepia = new Bitmap(source.Width, source.Height);
-
-            for (int x = 0; x < source.Width; x++)
+            if (isCameraRunning && webcamDevice != null)
             {
-                for (int y = 0; y < source.Height; y++)
+                CaptureFromWebcamForProcessing();
+            }
+            ApplySepiaFilter();
+        }
+
+        private void CaptureFromWebcamForProcessing()
+        {
+            try
+            {
+                webcamDevice.Sendmessage();
+                System.Threading.Thread.Sleep(100); 
+
+                if (Clipboard.ContainsImage())
                 {
-                    Color pixelColor = source.GetPixel(x, y);
-
-                    int tr = (int)(0.393 * pixelColor.R + 0.769 * pixelColor.G + 0.189 * pixelColor.B);
-                    int tg = (int)(0.349 * pixelColor.R + 0.686 * pixelColor.G + 0.168 * pixelColor.B);
-                    int tb = (int)(0.272 * pixelColor.R + 0.534 * pixelColor.G + 0.131 * pixelColor.B);
-
-                    tr = Math.Min(255, tr);
-                    tg = Math.Min(255, tg);
-                    tb = Math.Min(255, tb);
-
-                    Color newColor = Color.FromArgb(pixelColor.A, tr, tg, tb);
-                    sepia.SetPixel(x, y, newColor);
+                    pictureBox1.Image?.Dispose(); 
+                    pictureBox1.Image = (Image)Clipboard.GetImage().Clone();
                 }
             }
-            pictureBox2.Image = sepia;
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error capturing from webcam: {ex.Message}", "Capture Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void applyInversion()
+        {
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("Please load an image or start the webcam first.", "No Image",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                Bitmap source = new Bitmap(pictureBox1.Image);
+                Bitmap inverse = new Bitmap(source.Width, source.Height);
+                for (int x = 0; x < source.Width; x++)
+                {
+                    for (int y = 0; y < source.Height; y++)
+                    {
+                        Color pixelColor = source.GetPixel(x, y);
+                        Color newColor = Color.FromArgb(pixelColor.A, 255 - pixelColor.R, 255 - pixelColor.G, 255 - pixelColor.B);
+                        inverse.SetPixel(x, y, newColor);
+                    }
+                }
+                pictureBox2.Image?.Dispose();
+                pictureBox2.Image = inverse;
+                this.Text = "ImageProcessing";
+                source.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error applying sepia filter: {ex.Message}", "Processing Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Text = "ImageProcessing";
+            }
+        }
+
+        private void applyGrayScale()
+        {
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("Please load an image or start the webcam first.", "No Image",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                Bitmap source = new Bitmap(pictureBox1.Image);
+                Bitmap grayScale = new Bitmap(source.Width, source.Height);
+
+
+                for (int x = 0; x < source.Width; x++)
+                {
+                    for (int y = 0; y < source.Height; y++)
+                    {
+                        Color pixelColor = source.GetPixel(x, y);
+                        int grayValue = (int)(pixelColor.R + pixelColor.G + pixelColor.B) / 3;
+                        Color grayColor = Color.FromArgb(pixelColor.A, grayValue, grayValue, grayValue);
+                        grayScale.SetPixel(x, y, grayColor);
+                    }
+                }
+
+                pictureBox2.Image?.Dispose();
+                pictureBox2.Image = grayScale;
+                this.Text = "ImageProcessing";
+                source.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error applying sepia filter: {ex.Message}", "Processing Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Text = "ImageProcessing"; 
+            }
+        }
+        private void ApplySepiaFilter()
+        {
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("Please load an image or start the webcam first.", "No Image",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                Bitmap source = new Bitmap(pictureBox1.Image); 
+                Bitmap sepia = new Bitmap(source.Width, source.Height);
+
+                for (int x = 0; x < source.Width; x++)
+                {
+                    for (int y = 0; y < source.Height; y++)
+                    {
+                        Color pixelColor = source.GetPixel(x, y);
+
+                        int tr = (int)(0.393 * pixelColor.R + 0.769 * pixelColor.G + 0.189 * pixelColor.B);
+                        int tg = (int)(0.349 * pixelColor.R + 0.686 * pixelColor.G + 0.168 * pixelColor.B);
+                        int tb = (int)(0.272 * pixelColor.R + 0.534 * pixelColor.G + 0.131 * pixelColor.B);
+
+                        tr = Math.Min(255, Math.Max(0, tr));
+                        tg = Math.Min(255, Math.Max(0, tg));
+                        tb = Math.Min(255, Math.Max(0, tb));
+
+                        Color newColor = Color.FromArgb(pixelColor.A, tr, tg, tb);
+                        sepia.SetPixel(x, y, newColor);
+                    }
+                }
+
+                pictureBox2.Image?.Dispose();
+                pictureBox2.Image = sepia;
+                this.Text = "ImageProcessing";
+                source.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error applying sepia filter: {ex.Message}", "Processing Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Text = "ImageProcessing";
+            }
         }
         private void MakeHistogram(Bitmap bmp, PictureBox pictureBox)
         {
@@ -217,12 +314,71 @@ namespace ImageProcessing
             openFileDialog1.FileName = "";
             openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
             openFileDialog1.ShowDialog();
-            if (!string.IsNullOrEmpty(openFileDialog2.FileName))
+            if (!string.IsNullOrEmpty(openFileDialog1.FileName))
             {
                 Image img = Image.FromFile(openFileDialog1.FileName);
                 pictureBox1.Image = img;
                 pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+                StopWebcam();
             }
+        }
+
+        private WebCamLib.Device webcamDevice;
+        private WebCamLib.Device[] webcamDevices;
+        private bool isCameraRunning = false;
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!isCameraRunning)
+                {
+                    StartWebcam();
+                }
+                else
+                {
+                    StopWebcam();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Webcam error: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void StartWebcam()
+        {
+            WebCamLib.Device[] devices = WebCamLib.DeviceManager.GetAllDevices();
+
+            if (devices.Length == 0)
+            {
+                MessageBox.Show("No webcam devices found!", "No Camera",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            webcamDevice = devices[0];
+            webcamDevice.ShowWindow(pictureBox1);
+
+            button9.Text = "Stop Camera";
+            isCameraRunning = true;
+
+        }
+
+        private void StopWebcam()
+        {
+            if (webcamDevice != null)
+            {
+                webcamDevice.Stop();
+                webcamDevice = null;
+            }
+
+            button9.Text = "Start Camera";
+            isCameraRunning = false;
+
+            MessageBox.Show("Camera stopped", "Camera Stopped",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
