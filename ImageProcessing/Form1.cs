@@ -65,6 +65,7 @@ namespace ImageProcessing
             applyInversion();
         }
 
+
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (pictureBox2.Image != null)
@@ -100,11 +101,11 @@ namespace ImageProcessing
             try
             {
                 webcamDevice.Sendmessage();
-                System.Threading.Thread.Sleep(100); 
+                System.Threading.Thread.Sleep(100);
 
                 if (Clipboard.ContainsImage())
                 {
-                    pictureBox1.Image?.Dispose(); 
+                    pictureBox1.Image?.Dispose();
                     pictureBox1.Image = (Image)Clipboard.GetImage().Clone();
                 }
             }
@@ -185,7 +186,7 @@ namespace ImageProcessing
             {
                 MessageBox.Show($"Error applying sepia filter: {ex.Message}", "Processing Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Text = "ImageProcessing"; 
+                this.Text = "ImageProcessing";
             }
         }
         private void ApplySepiaFilter()
@@ -199,7 +200,7 @@ namespace ImageProcessing
 
             try
             {
-                Bitmap source = new Bitmap(pictureBox1.Image); 
+                Bitmap source = new Bitmap(pictureBox1.Image);
                 Bitmap sepia = new Bitmap(source.Width, source.Height);
 
                 for (int x = 0; x < source.Width; x++)
@@ -379,6 +380,56 @@ namespace ImageProcessing
 
             MessageBox.Show("Camera stopped", "Camera Stopped",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
+                BitmapFilter.Smooth(bmp, 1);
+                pictureBox2.Image = bmp;
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
+                BitmapFilter.GaussianBlur(bmp);
+                pictureBox2.Image = bmp;
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
+                BitmapFilter.Sharpen(bmp);
+                pictureBox2.Image = bmp;
+            }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
+                BitmapFilter.MeanRemoval(bmp);
+                pictureBox2.Image = bmp;
+            }
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
+                BitmapFilter.Embossing(bmp);
+                pictureBox2.Image = bmp;
+            }
         }
     }
 }

@@ -51,6 +51,11 @@ namespace ImageProcessing
             button7 = new Button();
             button8 = new Button();
             button9 = new Button();
+            button10 = new Button();
+            button11 = new Button();
+            button12 = new Button();
+            button13 = new Button();
+            button14 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -64,17 +69,19 @@ namespace ImageProcessing
             // panel1
             // 
             panel1.Controls.Add(pictureBox1);
-            panel1.Location = new Point(12, 36);
+            panel1.Location = new Point(14, 48);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(376, 345);
+            panel1.Size = new Size(430, 460);
             panel1.TabIndex = 0;
             // 
             // pictureBox1
             // 
             pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(376, 345);
+            pictureBox1.Size = new Size(430, 460);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -83,17 +90,19 @@ namespace ImageProcessing
             // 
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(pictureBox3);
-            panel2.Location = new Point(394, 36);
+            panel2.Location = new Point(450, 48);
+            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(399, 345);
+            panel2.Size = new Size(456, 460);
             panel2.TabIndex = 4;
             // 
             // pictureBox2
             // 
             pictureBox2.Dock = DockStyle.Fill;
             pictureBox2.Location = new Point(0, 0);
+            pictureBox2.Margin = new Padding(3, 4, 3, 4);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(399, 345);
+            pictureBox2.Size = new Size(456, 460);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
@@ -102,18 +111,21 @@ namespace ImageProcessing
             // 
             pictureBox3.Dock = DockStyle.Fill;
             pictureBox3.Location = new Point(0, 0);
+            pictureBox3.Margin = new Padding(3, 4, 3, 4);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(399, 345);
+            pictureBox3.Size = new Size(456, 460);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 0;
             pictureBox3.TabStop = false;
             // 
             // menuStrip1
             // 
+            menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1225, 24);
+            menuStrip1.Padding = new Padding(7, 3, 0, 3);
+            menuStrip1.Size = new Size(1569, 30);
             menuStrip1.TabIndex = 2;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -121,20 +133,20 @@ namespace ImageProcessing
             // 
             fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { uploadToolStripMenuItem, saveToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new Size(37, 20);
+            fileToolStripMenuItem.Size = new Size(46, 24);
             fileToolStripMenuItem.Text = "File";
             // 
             // uploadToolStripMenuItem
             // 
             uploadToolStripMenuItem.Name = "uploadToolStripMenuItem";
-            uploadToolStripMenuItem.Size = new Size(103, 22);
+            uploadToolStripMenuItem.Size = new Size(128, 26);
             uploadToolStripMenuItem.Text = "Open";
             uploadToolStripMenuItem.Click += uploadToolStripMenuItem_Click;
             // 
             // saveToolStripMenuItem
             // 
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(103, 22);
+            saveToolStripMenuItem.Size = new Size(128, 26);
             saveToolStripMenuItem.Text = "Save";
             saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
@@ -144,9 +156,10 @@ namespace ImageProcessing
             // 
             // button1
             // 
-            button1.Location = new Point(12, 509);
+            button1.Location = new Point(14, 679);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(75, 23);
+            button1.Size = new Size(86, 31);
             button1.TabIndex = 3;
             button1.Text = "Copy";
             button1.UseVisualStyleBackColor = true;
@@ -154,9 +167,10 @@ namespace ImageProcessing
             // 
             // button2
             // 
-            button2.Location = new Point(93, 509);
+            button2.Location = new Point(106, 679);
+            button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
-            button2.Size = new Size(75, 23);
+            button2.Size = new Size(86, 31);
             button2.TabIndex = 5;
             button2.Text = "Gray Scale";
             button2.UseVisualStyleBackColor = true;
@@ -164,9 +178,10 @@ namespace ImageProcessing
             // 
             // button3
             // 
-            button3.Location = new Point(174, 509);
+            button3.Location = new Point(199, 679);
+            button3.Margin = new Padding(3, 4, 3, 4);
             button3.Name = "button3";
-            button3.Size = new Size(115, 23);
+            button3.Size = new Size(131, 31);
             button3.TabIndex = 6;
             button3.Text = "Color Inversion";
             button3.UseVisualStyleBackColor = true;
@@ -174,9 +189,10 @@ namespace ImageProcessing
             // 
             // button4
             // 
-            button4.Location = new Point(295, 509);
+            button4.Location = new Point(337, 679);
+            button4.Margin = new Padding(3, 4, 3, 4);
             button4.Name = "button4";
-            button4.Size = new Size(75, 23);
+            button4.Size = new Size(86, 31);
             button4.TabIndex = 7;
             button4.Text = "Sepia";
             button4.UseVisualStyleBackColor = true;
@@ -184,9 +200,10 @@ namespace ImageProcessing
             // 
             // button5
             // 
-            button5.Location = new Point(376, 509);
+            button5.Location = new Point(430, 679);
+            button5.Margin = new Padding(3, 4, 3, 4);
             button5.Name = "button5";
-            button5.Size = new Size(75, 23);
+            button5.Size = new Size(86, 31);
             button5.TabIndex = 8;
             button5.Text = "Histogram";
             button5.UseVisualStyleBackColor = true;
@@ -195,17 +212,19 @@ namespace ImageProcessing
             // panel3
             // 
             panel3.Controls.Add(pictureBox4);
-            panel3.Location = new Point(799, 36);
+            panel3.Location = new Point(913, 48);
+            panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(415, 345);
+            panel3.Size = new Size(474, 460);
             panel3.TabIndex = 9;
             // 
             // pictureBox4
             // 
             pictureBox4.Dock = DockStyle.Fill;
             pictureBox4.Location = new Point(0, 0);
+            pictureBox4.Margin = new Padding(3, 4, 3, 4);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(415, 345);
+            pictureBox4.Size = new Size(474, 460);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.TabIndex = 0;
             pictureBox4.TabStop = false;
@@ -213,9 +232,10 @@ namespace ImageProcessing
             // 
             // button6
             // 
-            button6.Location = new Point(557, 387);
+            button6.Location = new Point(637, 516);
+            button6.Margin = new Padding(3, 4, 3, 4);
             button6.Name = "button6";
-            button6.Size = new Size(81, 23);
+            button6.Size = new Size(93, 31);
             button6.TabIndex = 10;
             button6.Text = "Load Image";
             button6.UseVisualStyleBackColor = true;
@@ -227,9 +247,10 @@ namespace ImageProcessing
             // 
             // button7
             // 
-            button7.Location = new Point(985, 387);
+            button7.Location = new Point(1126, 516);
+            button7.Margin = new Padding(3, 4, 3, 4);
             button7.Name = "button7";
-            button7.Size = new Size(75, 23);
+            button7.Size = new Size(86, 31);
             button7.TabIndex = 11;
             button7.Text = "Subtract";
             button7.UseVisualStyleBackColor = true;
@@ -237,9 +258,10 @@ namespace ImageProcessing
             // 
             // button8
             // 
-            button8.Location = new Point(126, 387);
+            button8.Location = new Point(144, 516);
+            button8.Margin = new Padding(3, 4, 3, 4);
             button8.Name = "button8";
-            button8.Size = new Size(117, 23);
+            button8.Size = new Size(134, 31);
             button8.TabIndex = 12;
             button8.Text = "Load Background";
             button8.UseVisualStyleBackColor = true;
@@ -247,19 +269,75 @@ namespace ImageProcessing
             // 
             // button9
             // 
-            button9.Location = new Point(148, 416);
+            button9.Location = new Point(169, 555);
+            button9.Margin = new Padding(3, 4, 3, 4);
             button9.Name = "button9";
-            button9.Size = new Size(75, 23);
+            button9.Size = new Size(86, 31);
             button9.TabIndex = 13;
             button9.Text = "WebCam";
             button9.UseVisualStyleBackColor = true;
             button9.Click += button9_Click;
             // 
+            // button10
+            // 
+            button10.Location = new Point(1440, 48);
+            button10.Name = "button10";
+            button10.Size = new Size(117, 29);
+            button10.TabIndex = 14;
+            button10.Text = "Smooth";
+            button10.UseVisualStyleBackColor = true;
+            button10.Click += button10_Click;
+            // 
+            // button11
+            // 
+            button11.Location = new Point(1440, 83);
+            button11.Name = "button11";
+            button11.Size = new Size(117, 29);
+            button11.TabIndex = 15;
+            button11.Text = "Gaussian Blur";
+            button11.UseVisualStyleBackColor = true;
+            button11.Click += button11_Click;
+            // 
+            // button12
+            // 
+            button12.Location = new Point(1440, 118);
+            button12.Name = "button12";
+            button12.Size = new Size(117, 29);
+            button12.TabIndex = 16;
+            button12.Text = "Sharpen";
+            button12.UseVisualStyleBackColor = true;
+            button12.Click += button12_Click;
+            // 
+            // button13
+            // 
+            button13.Location = new Point(1440, 153);
+            button13.Name = "button13";
+            button13.Size = new Size(117, 29);
+            button13.TabIndex = 17;
+            button13.Text = "Mean Removal";
+            button13.UseVisualStyleBackColor = true;
+            button13.Click += button13_Click;
+            // 
+            // button14
+            // 
+            button14.Location = new Point(1440, 188);
+            button14.Name = "button14";
+            button14.Size = new Size(117, 29);
+            button14.TabIndex = 18;
+            button14.Text = "Embossing";
+            button14.UseVisualStyleBackColor = true;
+            button14.Click += button14_Click;
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1225, 554);
+            ClientSize = new Size(1569, 739);
+            Controls.Add(button14);
+            Controls.Add(button13);
+            Controls.Add(button12);
+            Controls.Add(button11);
+            Controls.Add(button10);
             Controls.Add(button9);
             Controls.Add(button8);
             Controls.Add(button7);
@@ -273,6 +351,7 @@ namespace ImageProcessing
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(menuStrip1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Image Processing";
             Load += Form1_Load;
@@ -312,5 +391,10 @@ namespace ImageProcessing
         private Button button7;
         private Button button8;
         private Button button9;
+        private Button button10;
+        private Button button11;
+        private Button button12;
+        private Button button13;
+        private Button button14;
     }
 }
