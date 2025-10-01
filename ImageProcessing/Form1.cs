@@ -384,6 +384,10 @@ namespace ImageProcessing
 
         private void button10_Click(object sender, EventArgs e)
         {
+            if (isCameraRunning && webcamDevice != null)
+            {
+                CaptureFromWebcamForProcessing();
+            }
             if (pictureBox1.Image != null)
             {
                 Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
@@ -394,6 +398,10 @@ namespace ImageProcessing
 
         private void button11_Click(object sender, EventArgs e)
         {
+            if (isCameraRunning && webcamDevice != null)
+            {
+                CaptureFromWebcamForProcessing();
+            }
             if (pictureBox1.Image != null)
             {
                 Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
@@ -404,6 +412,10 @@ namespace ImageProcessing
 
         private void button12_Click(object sender, EventArgs e)
         {
+            if (isCameraRunning && webcamDevice != null)
+            {
+                CaptureFromWebcamForProcessing();
+            }
             if (pictureBox1.Image != null)
             {
                 Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
@@ -414,6 +426,10 @@ namespace ImageProcessing
 
         private void button13_Click(object sender, EventArgs e)
         {
+            if (isCameraRunning && webcamDevice != null)
+            {
+                CaptureFromWebcamForProcessing();
+            }
             if (pictureBox1.Image != null)
             {
                 Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
@@ -424,6 +440,10 @@ namespace ImageProcessing
 
         private void button14_Click(object sender, EventArgs e)
         {
+            if (isCameraRunning && webcamDevice != null)
+            {
+                CaptureFromWebcamForProcessing();
+            }
             if (pictureBox1.Image != null)
             {
                 Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
@@ -434,6 +454,10 @@ namespace ImageProcessing
 
         private void button15_Click(object sender, EventArgs e)
         {
+            if (isCameraRunning && webcamDevice != null)
+            {
+                CaptureFromWebcamForProcessing();
+            }
             if (pictureBox1.Image != null)
             {
                 Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
@@ -444,6 +468,10 @@ namespace ImageProcessing
 
         private void button16_Click(object sender, EventArgs e)
         {
+            if (isCameraRunning && webcamDevice != null)
+            {
+                CaptureFromWebcamForProcessing();
+            }
             if (pictureBox1.Image != null)
             {
                 Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
@@ -454,6 +482,10 @@ namespace ImageProcessing
 
         private void button17_Click(object sender, EventArgs e)
         {
+            if (isCameraRunning && webcamDevice != null)
+            {
+                CaptureFromWebcamForProcessing();
+            }
             if (pictureBox1.Image != null)
             {
                 Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
@@ -464,6 +496,10 @@ namespace ImageProcessing
 
         private void button18_Click(object sender, EventArgs e)
         {
+            if (isCameraRunning && webcamDevice != null)
+            {
+                CaptureFromWebcamForProcessing();
+            }
             if (pictureBox1.Image != null)
             {
                 Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
@@ -474,6 +510,10 @@ namespace ImageProcessing
 
         private void button19_Click(object sender, EventArgs e)
         {
+            if (isCameraRunning && webcamDevice != null)
+            {
+                CaptureFromWebcamForProcessing();
+            }
             if (pictureBox1.Image != null)
             {
                 Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
