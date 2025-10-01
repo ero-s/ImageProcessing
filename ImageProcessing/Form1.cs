@@ -427,7 +427,57 @@ namespace ImageProcessing
             if (pictureBox1.Image != null)
             {
                 Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
-                BitmapFilter.Embossing(bmp);
+                BitmapFilter.EmbossingLaplascian(bmp);
+                pictureBox2.Image = bmp;
+            }
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
+                BitmapFilter.EmbossingHoriVer(bmp);
+                pictureBox2.Image = bmp;
+            }
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
+                BitmapFilter.EmbossingAll(bmp);
+                pictureBox2.Image = bmp;
+            }
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
+                BitmapFilter.EmbossingLossy(bmp);
+                pictureBox2.Image = bmp;
+            }
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
+                BitmapFilter.EmbossingHori(bmp);
+                pictureBox2.Image = bmp;
+            }
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
+                BitmapFilter.EmbossingVer(bmp);
                 pictureBox2.Image = bmp;
             }
         }

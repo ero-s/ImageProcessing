@@ -161,13 +161,83 @@ public class BitmapFilter
         return BitmapFilter.Conv3x3(b, m);
     }
 
-    public static bool Embossing(Bitmap b)
+    public static bool EmbossingLaplascian(Bitmap b)
     {
         ConvMatrix m = new ConvMatrix();
 
         m.TopLeft = -1; m.TopMid = 0; m.TopRight = -1;
         m.MidLeft = 0; m.Pixel = 4; m.MidRight = 0;
         m.BottomLeft = -1; m.BottomMid = 0; m.BottomRight = -1;
+
+        m.Factor = 1;
+        m.Offset = 127;
+
+        return BitmapFilter.Conv3x3(b, m);
+    }
+
+    public static bool EmbossingHoriVer(Bitmap b)
+    {
+        ConvMatrix m = new ConvMatrix();
+
+        m.TopLeft = 0; m.TopMid = -1; m.TopRight = 0;
+        m.MidLeft = -1; m.Pixel = 4; m.MidRight = -1;
+        m.BottomLeft = 0; m.BottomMid = -1; m.BottomRight = 0;
+
+        m.Factor = 1;
+        m.Offset = 127;
+
+        return BitmapFilter.Conv3x3(b, m);
+    }
+
+    public static bool EmbossingAll(Bitmap b)
+    {
+        ConvMatrix m = new ConvMatrix();
+
+        m.TopLeft = -1; m.TopMid = -1; m.TopRight = -1;
+        m.MidLeft = -1; m.Pixel = 8; m.MidRight = -1;
+        m.BottomLeft = -1; m.BottomMid = -1; m.BottomRight = -1;
+
+        m.Factor = 1;
+        m.Offset = 127;
+
+        return BitmapFilter.Conv3x3(b, m);
+    }
+
+    public static bool EmbossingLossy(Bitmap b)
+    {
+        ConvMatrix m = new ConvMatrix();
+
+        m.TopLeft = 1; m.TopMid = -2; m.TopRight = 1;
+        m.MidLeft = -2; m.Pixel = 4; m.MidRight = -2;
+        m.BottomLeft = -2; m.BottomMid = 1; m.BottomRight = -2;
+
+        m.Factor = 1;
+        m.Offset = 127;
+
+        return BitmapFilter.Conv3x3(b, m);
+    }
+
+    public static bool EmbossingHori(Bitmap b)
+    {
+        ConvMatrix m = new ConvMatrix();
+
+        m.TopLeft = 0; m.TopMid = 0; m.TopRight = 0;
+        m.MidLeft = -1; m.Pixel = 2; m.MidRight = -1;
+        m.BottomLeft = 0; m.BottomMid = 0; m.BottomRight = 0;
+
+        m.Factor = 1;
+        m.Offset = 127;
+
+        return BitmapFilter.Conv3x3(b, m);
+    }
+
+    public static bool EmbossingVer(Bitmap b)
+    {
+        ConvMatrix m = new ConvMatrix();
+
+        m.TopLeft = 0; m.TopMid = -1; m.TopRight = 0;
+        m.MidLeft = 0; m.Pixel = 0; m.MidRight = 0;
+        m.BottomLeft = 0; m.BottomMid = 1; m.BottomRight = 0;
 
         m.Factor = 1;
         m.Offset = 127;
